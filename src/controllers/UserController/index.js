@@ -5,7 +5,11 @@ const User = require("../../models/user/User");
 class UserController {
   // [POST] SIGN UP
   postSignUp(req, res) {
-    res.send("alo");
+    res.json(req.body);
+  }
+  // [POST] SIGN IN
+  postSignIn(req, res) {
+    res.json(req.body);
   }
   // [GET] SIGNUP PAGE
   getSignUpPage(req, res) {

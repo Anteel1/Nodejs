@@ -7,7 +7,14 @@ const path = require("path");
 const app = express();
 const port = 3000;
 const db = require("./config/database/index");
-
+const bodyParser = require("body-parser");
+// BODY PARSER
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use(bodyParser.json());
 // CONNECT TO DB
 db.connectToDB();
 
