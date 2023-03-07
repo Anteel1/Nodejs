@@ -5,7 +5,10 @@ const User = require("../../models/user/User");
 class UserController {
   // [POST] SIGN UP
   postSignUp(req, res) {
-    res.json(req.body);
+    const formData = req.body;
+    const newUser = new User(formData);
+    newUser.save();
+    res.send("success !");
   }
   // [POST] SIGN IN
   postSignIn(req, res) {
@@ -19,10 +22,21 @@ class UserController {
   getSignInPage(req, res) {
     res.render("signin");
   }
-  // [GET] ALL USER
+  // [GET] ALL USER JSON
   getAllUser(req, res) {
     User.find({})
       .then((User) => res.json(User))
+      .catch((error) => res.json(error));
+  }
+  // [GET] ALL USER RENDER LIST
+  getAllUserRender(req, res) {
+    User.find({})
+      .then((User) => {
+        User = User.map((User) => User.toObject());
+        res.render("alluser", {
+          User,
+        });
+      })
       .catch((error) => res.json(error));
   }
 }

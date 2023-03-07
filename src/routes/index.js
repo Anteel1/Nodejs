@@ -6,6 +6,8 @@ const signUp = require("./user/auth/signup");
 const signIn = require("./user/auth/signin");
 
 const routes = (app) => {
+  // [GET] USER DATA
+  app.use(router.GET_ALL_USER, userRouter);
   // [GET] SIGN UP PAGE
   app.use(router.SIGNUP, signUp);
   // [GET] SIGN IN PAGE

@@ -6,7 +6,7 @@ const UserController = require("../../controllers/UserController");
 
 // ROUTER
 
-router.get("/", UserController.getSignUpPage);
-router.get("/getUser", UserController.getAllUser);
+router.get("/", UserController.getAllUserRender);
+router.get("/getuser", UserController.getAllUser);
 
 module.exports = router;
