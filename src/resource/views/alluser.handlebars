@@ -1,13 +1,28 @@
-<div style="margin: 20px;" class="container">
-  <div class="card" >
-    <div class="list-group">
-       <p class="text-center">User list</p>
-      {{#each User}}
-        <div class="d-flex">
-          <a class="list-group-item list-group-item-action">{{this.username}}</a>
-          <button class="btn btn-outline-primary">Edit</button>
-        </div>
-      {{/each}}
-    </div>
-  </div>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each User}}
+      <tr>
+        <th scope="rows">{{@index}}</th>
+        <td>{{this.username}}</td>
+        <td><a href="/user/{{this.username}}"><button
+              type="submit"
+              class="btn btn-outline-primary"
+            >Edit</button>
+          </a></td>
+         <td> <a href="/user/{{this.username}}"><button
+              type="submit"
+              class="btn btn-outline-primary"
+            >Delete</button>
+          </a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

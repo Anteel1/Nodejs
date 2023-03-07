@@ -1,8 +1,9 @@
-<h1>Sign up</h1>
+<h1>User Infomation</h1>
 <nav class="navbar bg-body-tertiary">
-  <form action="/signup/auth" method="post" class="container-colum">
+  <form action="/user/update" method="post" class="container-colum">
     <div class="d-flex">
       <input
+        value={{User.username}}
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -14,6 +15,7 @@
     </div>
     <div class="d-flex">
       <input
+        value={{User.password}}
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -25,39 +27,42 @@
     </div>
     <div class="d-flex">
       <input
+        value={{User.phoneNumber}}
         style="margin: 10;"
         type="text"
         class="form-control"
         placeholder="Phone"
         aria-label="Phone"
         aria-describedby="basic-addon1"
-        name="phoneNumber"
+        name="Phone"
       />
     </div>
        <div class="d-flex">
       <input
+        value={{User.card}}
         style="margin: 10;"
         type="text"
         class="form-control"
         placeholder="Card"
         aria-label="Card"
         aria-describedby="basic-addon1"
-        name="card"
+        name="Card"
       />
     </div>
        <div class="d-flex">
       <input
+        value={{User.address}}
         style="margin: 10;"
         type="text"
         class="form-control"
         placeholder="Address"
         aria-label="Address"
         aria-describedby="basic-addon1"
-        name="address"
+        name="Address"
       />
     </div>
     <div style="margin: 10;" class="d-grid gap-2">
-      <button class="btn btn-primary" type="submit">Sign up</button>
+      <button class="btn btn-primary" type="submit">Edit</button>
     </div>
   </form>
 </nav>

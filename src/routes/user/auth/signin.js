@@ -4,7 +4,6 @@ const router = express.Router();
 const UserController = require("../../../controllers/UserController");
 
 // ROUTER
-
 router.get("/", UserController.getSignInPage);
 router.post("/auth", UserController.postSignIn);
 

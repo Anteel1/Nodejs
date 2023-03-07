@@ -39,6 +39,17 @@ class UserController {
       })
       .catch((error) => res.json(error));
   }
+  // [GET] USER INFOR
+  getUserInfor(req, res, next) {
+    User.findOne({ username: req.params.slug })
+      .then((User) => {
+        User = User.toObject();
+        res.render("user", {
+          User,
+        });
+      })
+      .catch(next);
+  }
 }
 
 module.exports = new UserController();
