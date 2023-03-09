@@ -1,25 +1,27 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th style="color: white;" scope="col">#</th>
+      <th style="color: white;" scope="col">Name</th>
+      <th style="color: white;" scope="col">Edit</th>
+      <th style="color: white;" scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
     {{#each User}}
       <tr>
-        <th scope="rows">{{@index}}</th>
-        <td>{{this.username}}</td>
+        <th style="color: white;" scope="rows">{{@index}}</th>
+        <td style="color: white;" >{{this.username}}</td>
         <td><a href="/user/{{this.username}}"><button
               type="submit"
-              class="btn btn-outline-primary"
+              class="btn btn-dark"
             >Edit</button>
           </a></td>
-         <td> <a href="/user/{{this.username}}"><button
+        <td>
+          <a href="/user/{{this.username}}"><button
               type="submit"
-              class="btn btn-outline-primary"
+              class="btn btn-danger"
+              id="btnDelete"
             >Delete</button>
           </a></td>
       </tr>

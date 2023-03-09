@@ -5,6 +5,7 @@ const userRouter = require("./user");
 const signUpRouter = require("./user/auth/signup");
 const signInRouter = require("./user/auth/signin");
 const crudRouter = require("./user/crud/update");
+const chartPage = require("./chart/index");
 
 const routes = (app) => {
   // [GET] USER INFORMATION
@@ -17,6 +18,8 @@ const routes = (app) => {
   app.use(router.SIGNIN, signInRouter);
   //[GET] HOME PAGE
   app.use(router.HOME, homeRouter);
+  //[GET] CHART PAGE
+  app.use(router.CHART, chartPage);
 };
 
 module.exports = routes;

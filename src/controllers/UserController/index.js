@@ -50,6 +50,10 @@ class UserController {
       })
       .catch(next);
   }
+  // [POST] USER UPDATE
+  postUpdateUser(req, res, next) {
+    res.json(req.body);
+  }
 }
 
 module.exports = new UserController();
