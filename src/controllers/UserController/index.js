@@ -8,11 +8,16 @@ class UserController {
     const formData = req.body;
     const newUser = new User(formData);
     newUser.save();
-    res.send("success !");
+    res.redirect("/alluser");
   }
   // [POST] SIGN IN
-  postSignIn(req, res) {
-    res.json(req.body);
+  postSignIn(req, res, next) {
+    User.findOne(
+      { username: req.body.username },
+      { password: req.body.password }
+    )
+      .then(() => res.send("Login Success !"))
+      .catch(next);
   }
   // [GET] SIGNUP PAGE
   getSignUpPage(req, res) {
@@ -39,9 +44,9 @@ class UserController {
       })
       .catch((error) => res.json(error));
   }
-  // [GET] USER INFOR
+  // [GET] USER INFOR BY ID
   getUserInfor(req, res, next) {
-    User.findOne({ username: req.params.slug })
+    User.findById(req.params.id)
       .then((User) => {
         User = User.toObject();
         res.render("user", {
@@ -50,9 +55,13 @@ class UserController {
       })
       .catch(next);
   }
-  // [POST] USER UPDATE
+  // [POST] USER UPDATE BY ID
   postUpdateUser(req, res, next) {
-    res.json(req.body);
+    User.updateOne({ _id: req.params.id }, req.body)
+      .then(() => {
+        res.redirect("/alluser");
+      })
+      .catch(next);
   }
 }
 
