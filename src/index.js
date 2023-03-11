@@ -7,6 +7,8 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 3030;
 const db = require("./config/database/index");
+const { MongoClient } = require("mongodb");
+// const db = require("./config/database/index");
 const bodyParser = require("body-parser");
 // BODY PARSER
 app.use(
@@ -16,8 +18,27 @@ app.use(
 );
 app.use(bodyParser.json());
 // CONNECT TO DB
-db.connectToDB();
+// db.connectToDB();
+const uri =
+  "mongodb+srv://luonglkvn100:10l10l10L@demomongodb.rshjmd0.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+async function main() {
+  try {
+    await client.connect();
+    await listDatabases(client);
+    await client.db("demoMongo");
+    console.log("Connected successfully to server");
+  } catch (e) {
+    console.log(e);
+  }
+}
+async function listDatabases(client) {
+  databasesList = await client.db().admin().listDatabases();
 
+  console.log("Databases:");
+  databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
+}
+main();
 // LOGGER
 app.use(morgan("combined"));
 
