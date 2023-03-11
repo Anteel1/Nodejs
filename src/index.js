@@ -25,19 +25,13 @@ const client = new MongoClient(uri);
 async function main() {
   try {
     await client.connect();
-    await listDatabases(client);
     await client.db("demoMongo");
     console.log("Connected successfully to server");
   } catch (e) {
     console.log(e);
   }
 }
-async function listDatabases(client) {
-  databasesList = await client.db().admin().listDatabases();
 
-  console.log("Databases:");
-  databasesList.databases.forEach((db) => console.log(` - ${db.name}`));
-}
 main();
 // LOGGER
 app.use(morgan("combined"));
