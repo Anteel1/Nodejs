@@ -19,6 +19,10 @@
     "express-handlebars": "^7.0.1",
     "mongoose": "^7.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "engines" : { 
+    "npm" : ">=8.0.0 <9.0.0",
+    "node" : ">=16.0.0 <17.0.0"
+  }
   }
 }
