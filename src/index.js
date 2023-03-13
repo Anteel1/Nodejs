@@ -6,10 +6,8 @@ const routes = require("./routes");
 const path = require("path");
 const app = express();
 const port = process.env.PORT || 3032;
-const db = require("./config/database/index");
-const { MongoClient } = require("mongodb");
-// const db = require("./config/database/index");
 const bodyParser = require("body-parser");
+const mongoConnect = require("./config/database/index");
 // BODY PARSER
 app.use(
   bodyParser.urlencoded({
@@ -19,23 +17,9 @@ app.use(
 app.use(bodyParser.json());
 // CONNECT TO DB
 // db.connectToDB();
-const uri =
-  "mongodb+srv://luonglkvn100:10l10l10L@demomongodb.rshjmd0.mongodb.net/demoMongo?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
-async function main() {
-  try {
-    await client.connect();
-    // await client.db("demoMongo");
-    // console.log(client.db().databaseName);
-    console.log("Connected successfully to server");
-    client.close();
-  } catch (e) {
-    console.log(e);
-  }
-}
-module.exports = client;
-
-main();
+mongoConnect
+  .then(() => console.log("Connect success !"))
+  .then("Connect fail !");
 // LOGGER
 app.use(morgan("combined"));
 

@@ -1,5 +1,4 @@
 const User = require("../../models/user/User");
-// FUNCTION CONTROLLER
 
 // CLASS CONTROLLER
 class UserController {
@@ -12,12 +11,25 @@ class UserController {
   }
   // [POST] SIGN IN
   postSignIn(req, res, next) {
-    User.findOne(
-      { username: req.body.username },
-      { password: req.body.password }
-    )
-      .then(() => res.send("Login Success !"))
-      .catch(next);
+    try {
+      // check if the user exists
+      const user = User.findOne({ username: req.body.username })
+        .then(() => console.log(User))
+        .catch(next);
+      if (user) {
+        //check if password matches
+        const result = req.body.password === user.password;
+        if (result) {
+          res.render("secret");
+        } else {
+          res.status(400).json({ error: "password doesn't match" });
+        }
+      } else {
+        res.status(400).json({ error: "User doesn't exist" });
+      }
+    } catch (error) {
+      res.status(400).json({ error });
+    }
   }
   // [GET] SIGNUP PAGE
   getSignUpPage(req, res) {
