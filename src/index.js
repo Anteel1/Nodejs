@@ -5,7 +5,7 @@ const { engine } = require("express-handlebars");
 const routes = require("./routes");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3032;
 const db = require("./config/database/index");
 const { MongoClient } = require("mongodb");
 // const db = require("./config/database/index");
@@ -25,12 +25,15 @@ const client = new MongoClient(uri);
 async function main() {
   try {
     await client.connect();
-    await client.db("demoMongo");
+    // await client.db("demoMongo");
+    // console.log(client.db().databaseName);
     console.log("Connected successfully to server");
+    client.close();
   } catch (e) {
     console.log(e);
   }
 }
+module.exports = client;
 
 main();
 // LOGGER
