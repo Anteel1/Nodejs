@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 // CONNECT TO DB
 // db.connectToDB();
 const uri =
-  "mongodb+srv://luonglkvn100:10l10l10L@demomongodb.rshjmd0.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://luonglkvn100:10l10l10L@demomongodb.rshjmd0.mongodb.net/demoMongo?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 async function main() {
   try {
