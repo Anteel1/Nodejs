@@ -16,7 +16,6 @@ app.use(
 );
 app.use(bodyParser.json());
 // CONNECT TO DB
-// db.connectToDB();
 mongoConnect
   .then(() => console.log("Connect success !"))
   .then("Connect fail !");
