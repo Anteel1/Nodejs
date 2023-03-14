@@ -13,7 +13,7 @@ class CategoryController {
     Category.find({})
       .then((Category) => {
         Category = Category.map((Category) => Category.toObject());
-        res.render("products", {
+        res.render("allcategory", {
           Category,
         });
       })

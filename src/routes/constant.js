@@ -5,7 +5,7 @@ const router = {
   GET_ALL_USER: "/alluser",
   USER: "/user",
   CHART: "/chart",
-  CATEGORY: "/category",
+  CATEGORY: "/allcategory",
 };
 
 module.exports = router;

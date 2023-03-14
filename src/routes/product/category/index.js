@@ -4,7 +4,7 @@ const router = express.Router();
 const CategoryController = require("../../../controllers/CategoryController");
 
 // ROUTER
-router.get("/allproductapi", CategoryController.getCategoryAPIP);
-router.get("/allproduct", CategoryController.getCategory);
+router.get("/getallapi", CategoryController.getCategoryAPIP);
+router.get("/", CategoryController.getCategory);
 
 module.exports = router;
