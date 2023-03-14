@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // CONNECT TO DB
 mongoConnect
   .then(() => console.log("Connect success !"))
-  .then("Connect fail !");
+  .catch((erro) => console.log(erro));
 // LOGGER
 app.use(morgan("combined"));
 

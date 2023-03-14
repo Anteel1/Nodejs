@@ -10,17 +10,15 @@ class UserController {
     res.redirect("/alluser");
   }
   // [POST] SIGN IN
-  postSignIn(req, res, next) {
+  async postSignIn(req, res, next) {
     try {
       // check if the user exists
-      const user = User.findOne({ username: req.body.username })
-        .then(() => console.log(User))
-        .catch(next);
+      const user = await User.findOne({ username: req.body.username });
       if (user) {
         //check if password matches
         const result = req.body.password === user.password;
         if (result) {
-          res.render("secret");
+          res.send("Success !");
         } else {
           res.status(400).json({ error: "password doesn't match" });
         }
