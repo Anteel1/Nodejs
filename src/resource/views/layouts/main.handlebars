@@ -13,16 +13,20 @@
 </head>
 
 <body style="background-color: rgba(73, 73, 73, 0.993);">
-  <div  class="app">
+  <div class="app">
     <nav class="navbar bg-dark" data-bs-theme="dark" class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Home</a>
-        <form class="d-flex" role="search">
+        <div class="d-flex">
+          <a class="navbar-brand" href="/">Home</a>
+          <a class="navbar-brand" href="/alluser">List user</a>
+          <a class="navbar-brand" href="/category/allproduct">List category</a>
+        </div>
+
+        <div class="d-flex">
           <a class="navbar-brand" href="/signin">Sign in</a>
           <a class="navbar-brand" href="/signup">Sign up</a>
-          <a class="navbar-brand" href="/alluser">List user</a>
           <a class="navbar-brand" href="/chart">Chart</a>
-        </form>
+        </div>
       </div>
   </div>
   </nav>

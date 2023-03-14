@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th style="color: white;" scope="col">#</th>
+      <th style="color: white;" scope="col">Name</th>
+      <th style="color: white;" scope="col">Edit</th>
+      <th style="color: white;" scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each Category}}
+      <tr>
+        <th style="color: white;" scope="rows">{{@index}}</th>
+        <td style="color: white;" >{{this.name}}</td>
+        <td><a href="/user/{{this._id}}"><button
+              type="submit"
+              class="btn btn-dark"
+            >Edit</button>
+          </a></td>
+        <td>
+          <a href="/user/{{this._id}}"><button
+              type="submit"
+              class="btn btn-danger"
+              id="btnDelete"
+            >Delete</button>
+          </a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
