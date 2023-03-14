@@ -7,8 +7,8 @@ const Food = new Schema({
     contentType: String,
   },
   description: { type: String },
-  idCategory: { type: String },
-  price: { type: Number },
+  idCategory: { type: Schema.Types.ObjectId, ref: "categories" },
+  cost: { type: Schema.Types.Number },
   inventory: { type: Number },
 });
 

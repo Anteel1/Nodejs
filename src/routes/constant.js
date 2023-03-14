@@ -7,6 +7,7 @@ const router = {
   CHART: "/chart",
   CATEGORY: "/allcategory",
   FOOD: "/allfood",
+  NEWCATEGORY: "/newcategory",
 };
 
 module.exports = router;

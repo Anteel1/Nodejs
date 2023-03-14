@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 // CONTROLLER
-const CategoryController = require("../../../controllers/CategoryController");
+const FoodController = require("../../../controllers/Food");
 
 // ROUTER
-router.get("/", (req, res, next) => {
-  res.render("allfood");
-});
-
+router.get("/cate", FoodController.getAllFoodwithCategory);
+router.get("/", FoodController.getAllFood);
+router.get("/render", FoodController.getAllFoodRender);
 module.exports = router;
