@@ -6,6 +6,7 @@ const router = {
   USER: "/user",
   CHART: "/chart",
   CATEGORY: "/allcategory",
+  FOOD: "/allfood",
 };
 
 module.exports = router;

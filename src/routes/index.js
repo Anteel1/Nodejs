@@ -7,7 +7,7 @@ const signInRouter = require("./user/auth/signin");
 const crudRouter = require("./user/crud/update");
 const chartPage = require("./chart/index");
 const category = require("./product/category/index");
-
+const food = require("./product/food/index");
 const routes = (app) => {
   // [GET] USER INFORMATION
   app.use(router.USER, crudRouter);
@@ -23,6 +23,8 @@ const routes = (app) => {
   app.use(router.CHART, chartPage);
   //[GET] PRODUCT CATEGORY PAGE
   app.use(router.CATEGORY, category);
+  //[GET] PRODUCT PAGE
+  app.use(router.FOOD, food);
 };
 
 module.exports = routes;
