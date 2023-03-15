@@ -1,6 +1,6 @@
 const monggoose = require("mongoose");
-const uri =
-  "mongodb+srv://luonglkvn100:10l10l10L@demomongodb.rshjmd0.mongodb.net/demoMongo?retryWrites=true&w=majority";
+var env = require("../../../env");
+const uri = env.MONGODB_URI;
 const connectParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

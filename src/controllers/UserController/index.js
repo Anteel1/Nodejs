@@ -1,13 +1,17 @@
+const createTestSendEmail = require("../../config/mail/index");
 const User = require("../../models/user/User");
 
 // CLASS CONTROLLER
 class UserController {
   // [POST] SIGN UP
-  postSignUp(req, res) {
+  postSignUpAPI(req, res, next) {
     const formData = req.body;
     const newUser = new User(formData);
-    newUser.save();
-    res.redirect("user/alluser");
+    newUser
+      .save()
+      .then(res.status(200).json({ success: "Sign up success!" }))
+      .catch(res.send(next));
+    // res.render("user/alluser");
   }
   // [POST] SIGN IN
   async postSignIn(req, res, next) {
@@ -18,7 +22,7 @@ class UserController {
         //check if password matches
         const result = req.body.password === user.password;
         if (result) {
-          res.send("Success !");
+          res.status(200).json({ success: "Login success !" });
         } else {
           res.status(400).json({ error: "password doesn't match" });
         }
@@ -70,6 +74,20 @@ class UserController {
     User.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
         res.redirect("/alluser");
+      })
+      .catch(next);
+  }
+  // [GET] FORGOT PASSWORD PAGE
+  getForgotPassword(req, res, next) {
+    res.render("user/forgotpassword");
+  }
+  // [POST] FORGOT PASSWORD
+  postForgotPassword(req, res, next) {
+    User.findOne({ username: req.body.username })
+      .then((User) => {
+        createTestSendEmail();
+        User = User.toObject();
+        res.json(User);
       })
       .catch(next);
   }

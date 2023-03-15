@@ -1,33 +1,21 @@
 <div class="container">
-<h4 >Sign in</h4>
-<nav class="navbar bg- white">
-  <div>
-  <form action="/signin/auth" method="post" class="container-colum">
-    <div class="d-flex m-3">
-      <input
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Username"
-        aria-label="Username"
-        aria-describedby="basic-addon1"
-        name="username"
-      />
-    </div>
-    <div class="d-flex m-3">
-      <input
-        style="margin: 10;"
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        aria-label="Password"
-        aria-describedby="basic-addon1"
-        name="password"
-      />
-    </div>
-    <div style="margin: 10;" class="d-grid gap-2 m-3">
-      <button class="btn btn-primary" type="submit">Sign in</button>
-    </div>
-  </form>
-</nav>
+  <h4>Sign in</h4>
+  <nav class="navbar bg- white">
+    <div>
+      <form action="/signin/auth" method="post" class="container-colum">
+        <div class="d-flex m-3">
+          <input style="margin: 10;" type="text" class="form-control" placeholder="Username" aria-label="Username"
+            aria-describedby="basic-addon1" name="username" />
+        </div>
+        <div class="d-flex m-3">
+          <input style="margin: 10;" type="password" class="form-control" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1" name="password" />
+        </div>
+        <div class="container m-3"> <a href="/signin/forgotpass">Forgot password</a></div>
+
+        <div style="margin: 10;" class="d-grid gap-2 m-3">
+          <button class="btn btn-primary" type="submit">Sign in</button>
+        </div>
+      </form>
+  </nav>
 </div>
