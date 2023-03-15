@@ -8,6 +8,7 @@ const crudRouter = require("./user/crud/update");
 const chartPage = require("./chart/index");
 const category = require("./product/category/index");
 const food = require("./product/food/index");
+const foodCRUD = require("./product/food/crud/update");
 const newCategory = require("./product/category/create");
 // ROUTER
 const routes = (app) => {
@@ -26,9 +27,11 @@ const routes = (app) => {
   //[GET] PRODUCT CATEGORY PAGE
   app.use(router.CATEGORY, category);
   //[GET] PRODUCT PAGE
-  app.use(router.FOOD, food);
+  app.use(router.GET_ALL_FOOD, food);
   //[GET] CREATE CATEGORY PAGE
   app.use(router.NEWCATEGORY, newCategory);
+  // [GET] FOOD INFOR
+  app.use(router.FOOD, foodCRUD);
 };
 
 module.exports = routes;

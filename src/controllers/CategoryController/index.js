@@ -13,7 +13,7 @@ class CategoryController {
     Category.find({})
       .then((Category) => {
         Category = Category.map((Category) => Category.toObject());
-        res.render("allcategory", {
+        res.render("category/allcategory", {
           Category,
         });
       })
@@ -21,14 +21,14 @@ class CategoryController {
   }
   //[GET] CREATE CATEGORY PAGE
   getNewCategory(req, res, next) {
-    res.render("newcategory");
+    res.render("category/newcategory");
   }
   // [POST] SPOST CREATE CATEGORY
   postCreate(req, res) {
     const formData = req.body;
     const newCategory = new Category(formData);
     newCategory.save();
-    res.redirect("/allcategory");
+    res.redirect("category/allcategory");
   }
 }
 

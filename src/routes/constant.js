@@ -6,8 +6,9 @@ const router = {
   USER: "/user",
   CHART: "/chart",
   CATEGORY: "/allcategory",
-  FOOD: "/allfood",
+  GET_ALL_FOOD: "/allfood",
   NEWCATEGORY: "/newcategory",
+  FOOD: "/food",
 };
 
 module.exports = router;

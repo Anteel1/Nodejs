@@ -1,0 +1,62 @@
+<div class="container ">
+  <table class="table">
+    <label style="color: black;font-size: larger; font-weight: 400;">
+      Categories
+    </label>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each Category}}
+      <tr>
+        <th scope="rows">{{@index}}</th>
+        <td>{{this.name}}</td>
+        <td><a style="text-decoration: none;" href="/user/{{this._id}}"><button type="submit" class="btn btn-dark">Edit</button>
+          </a>
+          <a style="text-decoration: none; href="" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#exampleModal""><button type="submit" class="btn btn-danger" id="btnDelete">Delete</button>
+          </a>          
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+{{!-- MODAL --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Waring</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete it ?
+      </div>
+      <div class="modal-footer">
+        <button id="btnYes" type="button" class="btn btn-danger">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form name="delete-category-form" method="post" ></form>
+<script>
+  const deleteFrom =document.forms['delete-category-form']
+  const btnYes = document.getElementById('btnYes');
+  const exampleModal = document.getElementById('exampleModal')
+  exampleModal.addEventListener('show.bs.modal', event => {
+
+  const button = event.relatedTarget
+
+  const id = button.getAttribute('data-id')
+  btnYes.onclick = () =>{
+    alert(id)
+  }
+ console.log(id)
+})</script>

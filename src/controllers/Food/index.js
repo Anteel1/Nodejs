@@ -44,7 +44,18 @@ class FoodController {
     ])
       .then((Food) => {
         console.log(Food);
-        res.render("allfood", {
+        res.render("food/allfood", {
+          Food,
+        });
+      })
+      .catch(next);
+  }
+  // [GET] GET FOOD INFOR BY ID
+  getFoodInfor(req, res, next) {
+    Food.findById(req.params.id)
+      .then((Food) => {
+        Food = Food.toObject();
+        res.render("food/food", {
           Food,
         });
       })

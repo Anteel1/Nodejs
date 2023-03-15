@@ -7,7 +7,7 @@ class UserController {
     const formData = req.body;
     const newUser = new User(formData);
     newUser.save();
-    res.redirect("/alluser");
+    res.redirect("user/alluser");
   }
   // [POST] SIGN IN
   async postSignIn(req, res, next) {
@@ -31,11 +31,11 @@ class UserController {
   }
   // [GET] SIGNUP PAGE
   getSignUpPage(req, res) {
-    res.render("signup");
+    res.render("user/signup");
   }
   // [GET] SIGNIN PAGE
   getSignInPage(req, res) {
-    res.render("signin");
+    res.render("user/signin");
   }
   // [GET] ALL USER JSON
   getAllUser(req, res) {
@@ -48,7 +48,7 @@ class UserController {
     User.find({})
       .then((User) => {
         User = User.map((User) => User.toObject());
-        res.render("alluser", {
+        res.render("user/alluser", {
           User,
         });
       })
@@ -59,7 +59,7 @@ class UserController {
     User.findById(req.params.id)
       .then((User) => {
         User = User.toObject();
-        res.render("user", {
+        res.render("user/user", {
           User,
         });
       })

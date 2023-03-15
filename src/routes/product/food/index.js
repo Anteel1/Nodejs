@@ -7,4 +7,5 @@ const FoodController = require("../../../controllers/Food");
 router.get("/cate", FoodController.getAllFoodwithCategory);
 router.get("/", FoodController.getAllFood);
 router.get("/render", FoodController.getAllFoodRender);
+
 module.exports = router;
