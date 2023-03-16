@@ -1,17 +1,26 @@
-const createTestSendEmail = require("../../config/mail/index");
+const transporter = require("../../config/mail/index");
+const env = require("../../../env");
 const User = require("../../models/user/User");
 
 // CLASS CONTROLLER
 class UserController {
   // [POST] SIGN UP
-  postSignUpAPI(req, res, next) {
+  async postSignUpAPI(req, res, next) {
     const formData = req.body;
-    const newUser = new User(formData);
-    newUser
-      .save()
-      .then(res.status(200).json({ success: "Sign up success!" }))
-      .catch(res.send(next));
-    // res.render("user/alluser");
+    const user = await User.findOne({ username: formData.username });
+    if (user) {
+      res.status(409).json({ failed: "User already exist !" });
+    } else {
+      try {
+        const newUser = new User(formData);
+        newUser
+          .save()
+          .then(res.status(200).json({ success: "Sign up success!" }))
+          .catch(res.send(next));
+      } catch (error) {
+        res.status(409).json({ erro: error });
+      }
+    }
   }
   // [POST] SIGN IN
   async postSignIn(req, res, next) {
@@ -73,7 +82,7 @@ class UserController {
   postUpdateUser(req, res, next) {
     User.updateOne({ _id: req.params.id }, req.body)
       .then(() => {
-        res.redirect("/alluser");
+        res.json({ status: "Success !" });
       })
       .catch(next);
   }
@@ -85,9 +94,34 @@ class UserController {
   postForgotPassword(req, res, next) {
     User.findOne({ username: req.body.username })
       .then((User) => {
-        createTestSendEmail();
-        User = User.toObject();
-        res.json(User);
+        try {
+          User = User.toObject();
+          var mailOptions = {
+            from: env.email.user,
+            to: User.email,
+            subject: "Verify",
+            text: "Verify code:" + Math.floor(Math.random() * 1000000),
+          };
+
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log("Email sent: " + info.response);
+              res.send("Mail have sent to:" + User.email);
+            }
+          });
+        } catch (error) {
+          res.send("Failed !");
+        }
+      })
+      .catch(next);
+  }
+  // [POST] DELETE USER
+  postDeleteUser(req, res, next) {
+    User.findByIdAndDelete({ _id: req.params.id })
+      .then(() => {
+        res.json({ status: "Success !" });
       })
       .catch(next);
   }

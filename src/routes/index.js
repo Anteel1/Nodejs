@@ -4,7 +4,8 @@ const homeRouter = require("./home");
 const userRouter = require("./user");
 const signUpRouter = require("./user/auth/signup");
 const signInRouter = require("./user/auth/signin");
-const crudRouter = require("./user/crud/update");
+const crudUpdateRouter = require("./user/crud/update");
+const crudDeleteRouter = require("./user/crud/delete");
 const chartPage = require("./chart/index");
 const category = require("./product/category/index");
 const food = require("./product/food/index");
@@ -13,7 +14,9 @@ const newCategory = require("./product/category/create");
 // ROUTER
 const routes = (app) => {
   // [GET] USER INFORMATION
-  app.use(router.USER, crudRouter);
+  app.use(router.USER, crudUpdateRouter);
+  // [GET] USER INFORMATION
+  app.use(router.USER, crudDeleteRouter);
   // [GET] LIST USER PAGE
   app.use(router.GET_ALL_USER, userRouter);
   // [GET] SIGN UP PAGE

@@ -24,11 +24,20 @@ class CategoryController {
     res.render("category/newcategory");
   }
   // [POST] SPOST CREATE CATEGORY
-  postCreate(req, res) {
+  async postCreate(req, res) {
     const formData = req.body;
-    const newCategory = new Category(formData);
-    newCategory.save();
-    res.redirect("category/allcategory");
+    try {
+      const food = await Category.findOne({ name: formData.name });
+      if (food) {
+        res.status(409).json({ status: "Category already exist !" });
+      } else {
+        const newCategory = new Category(formData);
+        newCategory.save();
+        res.json({ status: "Success !" });
+      }
+    } catch (error) {
+      res.json({ status: "Failed !" });
+    }
   }
 }
 
