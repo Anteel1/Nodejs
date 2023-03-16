@@ -3,8 +3,8 @@ const Category = require("../../models/category/Category");
 // CLASS CONTROLLER
 class CategoryController {
   //[GET] ALL CATEGORY  JSON
-  getCategoryAPIP(req, res, next) {
-    Category.find({})
+  async getCategoryAPIP(req, res, next) {
+    await Category.find({})
       .then((Category) => res.json(Category))
       .catch((error) => res.json(error));
   }
@@ -27,16 +27,13 @@ class CategoryController {
   async postCreate(req, res) {
     const formData = req.body;
     try {
-      const food = await Category.findOne({ name: formData.name });
-      if (food) {
-        res.status(409).json({ status: "Category already exist !" });
-      } else {
-        const newCategory = new Category(formData);
-        newCategory.save();
+      const newCategory = new Category(formData);
+      const newCate = await newCategory.save();
+      if (newCate) {
         res.json({ status: "Success !" });
       }
     } catch (error) {
-      res.json({ status: "Failed !" });
+      res.json({ error: error });
     }
   }
 }
