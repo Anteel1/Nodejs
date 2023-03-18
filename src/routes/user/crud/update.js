@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // CONTROLLER
-const UserController = require("../../../controllers/UserController/");
+const UserController = require("../../../controllers/UserController");
 
 // ROUTER
 router.post("/:id/update", UserController.postUpdateUser);

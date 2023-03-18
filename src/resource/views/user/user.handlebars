@@ -3,7 +3,7 @@
   <form action="/user/{{User._id}}/update" method="post" class="container-colum">
     <div class="d-flex">
       <input
-        value={{User.username}}
+        value="{{User.username}}"
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -15,7 +15,7 @@
     </div>
     <div class="d-flex">
       <input
-        value={{User.password}}
+        
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -23,11 +23,12 @@
         aria-label="Password"
         aria-describedby="basic-addon1"
         name="password"
+        value="{{User.password}}"
       />
     </div>
     <div class="d-flex">
       <input
-        value={{User.phoneNumber}}
+        
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -35,11 +36,12 @@
         aria-label="Phone"
         aria-describedby="basic-addon1"
         name="phoneNumber"
+        value="{{User.phoneNumber}}"
       />
     </div>
        <div class="d-flex">
       <input
-        value={{User.card}}
+        
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -47,11 +49,12 @@
         aria-label="Card"
         aria-describedby="basic-addon1"
         name="card"
+        value="{{User.card}}"
       />
     </div>
        <div class="d-flex">
       <input
-        value={{User.address}}
+        
         style="margin: 10;"
         type="text"
         class="form-control"
@@ -59,6 +62,7 @@
         aria-label="Address"
         aria-describedby="basic-addon1"
         name="address"
+        value="{{User.address}}"
       />
     </div>
     <div style="margin: 10;" class="d-grid gap-2">

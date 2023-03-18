@@ -1,77 +1,29 @@
 <h1>Edit Food</h1>
 <nav class="navbar bg- rgba(73, 73, 73, 0.993)">
-  <form action="/user/{{User._id}}/update" method="post" class="container-colum">
+  <form action="/food/{{Food._id}}" method="post" class="container-colum">
     <div class="d-flex m-3">
-      <input
-        value={{Food.name}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Username"
-        aria-label="Username"
-        aria-describedby="basic-addon1"
-        name="name"
-      />
+      <input style="margin: 10;" type="text" class="form-control" placeholder="Name" aria-label="Name"
+        aria-describedby="basic-addon1" name="name" value="{{Food.name}}" />
     </div>
     <div class="d-flex m-3">
-      <input
-        value={{Food.description}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Password"
-        aria-label="Password"
-        aria-describedby="basic-addon1"
-        name="description"
-      />
+      <input style="margin: 10;" type="text" class="form-control" placeholder="description" aria-label="description"
+        aria-describedby="basic-addon1" name="description" value="{{Food.description}}" />
     </div>
     <div class="d-flex m-3">
-      <input
-        value={{Food.idCategory}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Phone"
-        aria-label="Phone"
-        aria-describedby="basic-addon1"
-        name="idCategory"
-      />
+      <input style="margin: 10;" type="text" class="form-control" placeholder="idCategory" aria-label="idCategory"
+        aria-describedby="basic-addon1" name="idCategory" value="{{Food.idCategory}}" />
     </div>
-       <div class="d-flex m-3">
-      <input
-        value={{Food.img}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Card"
-        aria-label="Card"
-        aria-describedby="basic-addon1"
-        name="img"
-      />
+    <div class="d-flex m-3">
+      <input style="margin: 10;" type="text" class="form-control" placeholder="img" aria-label="img"
+        aria-describedby="basic-addon1" name="img" value="{{Food.img}}" />
     </div>
-       <div class="d-flex m-3">
-      <input
-        value={{Food.cost}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Address"
-        aria-label="Address"
-        aria-describedby="basic-addon1"
-        name="cost"
-      />
+    <div class="d-flex m-3">
+      <input style="margin: 10;" type="text" class="form-control" placeholder="cost" aria-label="cost"
+        aria-describedby="basic-addon1" name="cost" value="{{Food.cost}}" />
     </div>
-     <div class="d-flex m-3">
-      <input
-        value={{Food.inventory}}
-        style="margin: 10;"
-        type="text"
-        class="form-control"
-        placeholder="Address"
-        aria-label="Address"
-        aria-describedby="basic-addon1"
-        name="inventory"
-      />
+    <div class="d-flex m-3">
+      <input style="margin: 10;" type="text" class="form-control" placeholder="inventory" aria-label="inventory"
+        aria-describedby="basic-addon1" name="inventory" value="{{Food.inventory}}" />
     </div>
     <div style="margin: 10;" class="d-grid gap-2">
       <button class="btn btn-primary" type="submit">Edit</button>

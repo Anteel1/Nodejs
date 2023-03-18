@@ -69,10 +69,11 @@ class UserController {
   // [GET] USER INFOR BY ID
   async getUserInfor(req, res, next) {
     try {
-      await User.findById(req.params.id);
-      User = User.toObject();
-      res.render("user/user", {
-        User,
+      await User.findById(req.params.id).then((User) => {
+        User = User.toObject();
+        res.render("user/user", {
+          User,
+        });
       });
     } catch (error) {
       res.status(409).json({ error: error });

@@ -18,14 +18,21 @@
         </div>
         <div class="text-center"> --Or--</div>
         <div style="margin: 10;" class="d-grid gap-2 m-3">
-          <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-          </fb:login-button>
       </form>
+
+
+      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
       <div id="status">
       </div>
 
   </nav>
 </div>
+<form name="signinFB" method="POST" action="signup/auth">
+  <input name="username" value="" type="text" id="username">
+  <input name="password" value="" hidden="true" type="text" id="password">
+  <input name="email" value="" hidden="true" type="text" id="email">
+</form>
 <script>
 
   function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
@@ -64,9 +71,13 @@
   function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function (response) {
+      console.log(response)
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+      document.getElementById('username').value = response.name
+      const formSigninFB = document.forms['signinFB']
+        formSigninFB.submit()
     });
   }
 

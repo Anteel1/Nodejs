@@ -65,6 +65,32 @@ class FoodController {
       res.status(409).json({ error: error });
     }
   }
+  // [POST] FOOD UPDATE BY ID
+  async postUpdateFood(req, res, next) {
+    const formData = req.body;
+    try {
+      await Food.updateOne({ _id: req.params.id }, formData);
+      res.status(200).json({ success: "Success !" });
+    } catch (error) {
+      res.status(409).json({ erro: error });
+    }
+  }
+  // [POST] CREATE FOOD
+  async postCreateFood(req, res, next) {
+    const formData = req.body;
+    try {
+      const newFood = new Food(formData);
+      await newFood.save();
+      res.status(200).json({ status: "Success !" });
+    } catch (error) {
+      res.status(409).json({ erro: error });
+      // }
+    }
+  }
+  // [GET] CREATE PAGE
+  getCreateFood(req, res, next) {
+    res.render("food/newfood");
+  }
 }
 
 module.exports = new FoodController();

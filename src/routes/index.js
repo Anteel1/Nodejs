@@ -9,7 +9,7 @@ const crudDeleteRouter = require("./user/crud/delete");
 const chartPage = require("./chart/index");
 const category = require("./product/category/index");
 const food = require("./product/food/index");
-const foodCRUD = require("./product/food/crud/update");
+const foodCRUD = require("./product/food/crud");
 const newCategory = require("./product/category/create");
 // ROUTER
 const routes = (app) => {
