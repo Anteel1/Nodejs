@@ -36,6 +36,28 @@ class UserController {
       res.status(400).json({ error });
     }
   }
+  // [POST] SIGN IN
+  async postSignInSocial(req, res, next) {
+    try {
+      // check if the user exists
+      const user = await User.findOne({ username: req.body.username });
+      if (user) {
+        //check if password matches
+        const result = req.body.password === user.password;
+        if (result) {
+          res.status(200).json({ success: "Login success !" });
+        } else {
+          res.status(400).json({ error: "password doesn't match" });
+        }
+      } else {
+        const newUser = new User(req.body);
+        await newUser.save();
+        res.status(200).json({ status: "Success !" });
+      }
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  }
   // [GET] SIGNUP PAGE
   getSignUpPage(req, res) {
     res.render("user/signup");
