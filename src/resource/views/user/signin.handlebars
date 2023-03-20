@@ -33,14 +33,13 @@
       </div>
   </nav>
 </div>
-<form name="signinFB" method="POST" action="signup/auth/social">
+<form name="signinFB" method="POST" action="signin/auth/social">
   <input name="username" value="" hidden="true" type="text" id="username">
   <input name="password" value="" hidden="true" type="text" id="password">
   <input name="email" value="" hidden="true" type="text" id="email">
 </form>
 
 {{!-- // LOGIN WITH GOOGLE --}}
-<script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
 <script>
   function handleCredentialResponse(response) {
     // decodeJwtResponse() is a custom function defined by you
