@@ -5,9 +5,10 @@ const router = {
   GET_ALL_USER: "/alluser",
   USER: "/user",
   CHART: "/chart",
-  CATEGORY: "/allcategory",
+  ALLCATEGORY: "/allcategory",
   GET_ALL_FOOD: "/allfood",
   NEWCATEGORY: "/newcategory",
+  CATEGORY: "/category",
   FOOD: "/food",
 };
 

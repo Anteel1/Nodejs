@@ -11,6 +11,7 @@ const category = require("./product/category/index");
 const food = require("./product/food/index");
 const foodCRUD = require("./product/food/crud");
 const newCategory = require("./product/category/create");
+const updateCategory = require("./product/category/update");
 // ROUTER
 const routes = (app) => {
   // [GET] USER INFORMATION
@@ -28,7 +29,9 @@ const routes = (app) => {
   //[GET] CHART PAGE
   app.use(router.CHART, chartPage);
   //[GET] PRODUCT CATEGORY PAGE
-  app.use(router.CATEGORY, category);
+  app.use(router.ALLCATEGORY, category);
+  //[GET] ITEM CATEGORY PAGE
+  app.use(router.CATEGORY, updateCategory);
   //[GET] PRODUCT PAGE
   app.use(router.GET_ALL_FOOD, food);
   //[GET] CREATE CATEGORY PAGE

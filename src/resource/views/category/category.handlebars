@@ -1,0 +1,20 @@
+<h4 style="margin: 10px;" class="container">Create new category</h4>
+<nav class="navbar bg-white">
+  <form action="/category/{{Category._id}}" method="post" method="post" class="container-colum">
+       <div class="d-flex m-3">
+      <input
+        style="margin: 10;"
+        type="text"
+        class="form-control"
+        placeholder="Category name"
+        aria-label="Category name"
+        aria-describedby="basic-addon1"
+        name="name"
+        value="{{Category.name}}"
+      />
+    </div>
+    <div style="margin: 10;" class="d-grid gap-2 m-3">
+      <button class="btn btn-primary" type="submit">Edit</button>
+    </div>
+  </form>
+</nav>
