@@ -5,7 +5,7 @@ const { engine } = require("express-handlebars");
 const routes = require("./routes");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 3034;
+const port = process.env.PORT || 3031;
 const bodyParser = require("body-parser");
 const mongoConnect = require("./config/database/index");
 // BODY PARSER

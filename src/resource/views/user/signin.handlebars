@@ -19,22 +19,24 @@
         <div class="text-center"> --Or--</div>
         <div style="margin: 10;" class="d-grid gap-2 m-3">
       </form>
-
-
       <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
       </fb:login-button>
       <div id="status">
       </div>
-
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
+      <div id="g_id_onload" data-client_id="83070404648-b3n2k642qkdjcs1535kto7glbgkbc5e7.apps.googleusercontent.com"
+        data-callback="handleCredentialResponse">
+      </div>
+      <div class="g_id_signin" data-type="standard"></div>
   </nav>
 </div>
 <form name="signinFB" method="POST" action="signup/auth">
-  <input name="username" value="" type="text" id="username">
+  <input name="username" value="" hidden="true" type="text" id="username">
   <input name="password" value="" hidden="true" type="text" id="password">
   <input name="email" value="" hidden="true" type="text" id="email">
 </form>
-<script>
 
+<script>
   function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
     console.log('statusChangeCallback');
     console.log(response);                   // The current login status of the person.
@@ -45,15 +47,11 @@
         'into this webpage.';
     }
   }
-
-
   function checkLoginState() {               // Called when a person is finished with the Login Button.
     FB.getLoginStatus(function (response) {   // See the onlogin handler
       statusChangeCallback(response);
     });
   }
-
-
   window.fbAsyncInit = function () {
     FB.init({
       appId: '{app-id}',
@@ -61,13 +59,10 @@
       xfbml: true,                     // Parse social plugins on this webpage.
       version: '{api-version}'           // Use this Graph API version for this call.
     });
-
-
     FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
       statusChangeCallback(response);        // Returns the login status.
     });
   };
-
   function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function (response) {
@@ -77,7 +72,7 @@
         'Thanks for logging in, ' + response.name + '!';
       document.getElementById('username').value = response.name
       const formSigninFB = document.forms['signinFB']
-        formSigninFB.submit()
+      formSigninFB.submit()
     });
   }
 
