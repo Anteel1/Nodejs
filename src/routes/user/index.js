@@ -8,5 +8,4 @@ const UserController = require("../../controllers/UserController");
 
 router.get("/", UserController.getAllUserRender);
 router.get("/getuser", UserController.getAllUser);
-
 module.exports = router;

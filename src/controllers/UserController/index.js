@@ -25,7 +25,7 @@ class UserController {
         //check if password matches
         const result = req.body.password === user.password;
         if (result) {
-          res.status(200).json({ success: "Login success !" });
+          res.status(200).json({ success: "Login success !", data: user });
         } else {
           res.status(400).json({ error: "password doesn't match" });
         }
@@ -45,7 +45,7 @@ class UserController {
         //check if password matches
         const result = req.body.password === user.password;
         if (result) {
-          res.status(200).json({ success: "Login success !" });
+          res.status(200).json({ success: "Login success !", data: user });
         } else {
           res.status(400).json({ error: "password doesn't match" });
         }
@@ -117,31 +117,34 @@ class UserController {
   }
   // [POST] FORGOT PASSWORD
   async postForgotPassword(req, res, next) {
-    const user = await User.findOne({ username: req.body.username });
-    if (user) {
-      try {
-        User = User.toObject();
-        var mailOptions = {
-          from: env.email.user,
-          to: User.email,
-          subject: "Verify",
-          text: "Verify code:" + Math.floor(Math.random() * 1000000),
-        };
+    const user = await User.findOne({ username: req.body.username }).then(
+      (user) => {
+        if (user) {
+          try {
+            user = user.toObject();
+            var mailOptions = {
+              from: env.email.user,
+              to: user.email,
+              subject: "Verify",
+              text: "Your password is :" + user.password,
+            };
 
-        transporter.sendMail(mailOptions, function (error, info) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log("Email sent: " + info.response);
-            res.send("Mail have sent to:" + User.email);
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Email sent: " + info.response);
+                res.send("Mail have sent to:" + user.email);
+              }
+            });
+          } catch (error) {
+            res.send("Failed !!");
           }
-        });
-      } catch (error) {
-        res.send("Failed !");
+        } else {
+          res.status(409).json({ error: "Can't find username" });
+        }
       }
-    } else {
-      res.status(409).json({ error: "Can't find username" });
-    }
+    );
   }
   // [POST] DELETE USER
   postDeleteUser(req, res, next) {
