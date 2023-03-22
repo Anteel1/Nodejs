@@ -47,7 +47,7 @@
 </div>
 <form name="delete-category-form" method="post" ></form>
 <script>
-  const deleteFrom =document.forms['delete-category-form']
+  const deleteForm =document.forms['delete-category-form']
   const btnYes = document.getElementById('btnYes');
   const exampleModal = document.getElementById('exampleModal')
   exampleModal.addEventListener('show.bs.modal', event => {
@@ -56,7 +56,8 @@
 
   const id = button.getAttribute('data-id')
   btnYes.onclick = () =>{
-    alert(id)
+    deleteForm.action ="/category/"+id+"/delete"
+    deleteForm.submit()
   }
  console.log(id)
 })</script>

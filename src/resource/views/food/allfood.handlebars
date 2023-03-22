@@ -54,7 +54,7 @@
 </div>
 <form name="delete-food-form" method="post" ></form>
 <script>
-  const deleteFrom =document.forms['delete-food-form']
+  const deleteForm =document.forms['delete-food-form']
   const btnYes = document.getElementById('btnYes');
   const exampleModal = document.getElementById('exampleModal')
   exampleModal.addEventListener('show.bs.modal', event => {
@@ -63,7 +63,8 @@
 
   const id = button.getAttribute('data-id')
   btnYes.onclick = () =>{
-    alert(id)
+    deleteForm.action ="/food/"+id+"/delete"
+    deleteForm.submit()
   }
  console.log(id)
 })</script>

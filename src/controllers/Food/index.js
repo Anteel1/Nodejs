@@ -91,6 +91,14 @@ class FoodController {
   getCreateFood(req, res, next) {
     res.render("food/newfood");
   }
+  // [POST] DELETE FOOD
+  postDeleteFood(req, res, next) {
+    Food.findByIdAndDelete({ _id: req.params.id })
+      .then(() => {
+        res.status(200).json({ success: "Success !" });
+      })
+      .catch(next);
+  }
 }
 
 module.exports = new FoodController();

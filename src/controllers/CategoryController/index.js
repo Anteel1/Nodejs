@@ -58,6 +58,13 @@ class CategoryController {
     } catch (error) {
       res.status(409).json({ erro: error });
     }
+  } // [POST] DELETE CATEGORY
+  postDeleteCategory(req, res, next) {
+    Category.findByIdAndDelete({ _id: req.params.id })
+      .then(() => {
+        res.status(200).json({ success: "Success !" });
+      })
+      .catch(next);
   }
 }
 
