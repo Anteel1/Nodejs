@@ -5,6 +5,11 @@ module.exports = {
     user: "luonglkvn1000@gmail.com",
     pass: "ictbnsnvhzzvbhgl",
   },
+  CLOUDDINARY_CONFIG: {
+    cloud_name: "dnxe9l57i",
+    api_key: "991189484643755",
+    api_secret: "e6ZiAtks5BeldzKgTew3IqC8KHk",
+  },
 };
 GOOGLE_CLIENT_ID =
   "83070404648-b3n2k642qkdjcs1535kto7glbgkbc5e7.apps.googleusercontent.com";

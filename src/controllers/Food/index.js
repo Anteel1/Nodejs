@@ -1,5 +1,6 @@
 const Category = require("../../models/category/Category");
 const Food = require("../../models/food/Food");
+const cloudinary = require("../../config/cloudinary/index");
 
 // CLASS CONTROLLER
 class FoodController {
@@ -77,13 +78,35 @@ class FoodController {
   }
   // [POST] CREATE FOOD
   async postCreateFood(req, res, next) {
-    const formData = req.body;
+    const idRandom = Math.random() * 100000;
+    const imgFile = req.file.path;
     try {
+      // UPDATE TO CLOUD
+      const res = cloudinary.uploader.upload(imgFile, {
+        public_id: idRandom,
+        resource_type: "image",
+      });
+      // Generate
+      const url = cloudinary.url(idRandom, {
+        width: 100,
+        height: 100,
+        Crop: "fill",
+      });
+      // The output url
+      console.log(url);
+      const formData = {
+        name: req.body.name,
+        description: req.body.description,
+        idCategory: req.body.idCategory,
+        cost: req.body.cost,
+        inventory: req.body.inventory,
+        img: url,
+      };
       const newFood = new Food(formData);
       await newFood.save();
       res.status(200).json({ status: "Success !" });
     } catch (error) {
-      res.status(409).json({ erro: error });
+      res.send(error);
       // }
     }
   }
