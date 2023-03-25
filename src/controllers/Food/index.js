@@ -78,22 +78,20 @@ class FoodController {
   }
   // [POST] CREATE FOOD
   async postCreateFood(req, res, next) {
-    const idRandom = Math.random() * 100000;
-    const imgFile = req.file.path;
     try {
+      const idRandom = Math.random() * 100000;
+      const imgFile = req.file.path;
       // UPDATE TO CLOUD
-      const res = cloudinary.uploader.upload(imgFile, {
+      const upload = await cloudinary.uploader.upload(imgFile, {
         public_id: idRandom,
         resource_type: "image",
+        transformation: {
+          width: 50,
+          height: 50,
+        },
       });
-      // Generate
-      const url = cloudinary.url(idRandom, {
-        width: 100,
-        height: 100,
-        Crop: "fill",
-      });
-      // The output url
-      console.log(url);
+      console.log(upload);
+      const url = upload.secure_url;
       const formData = {
         name: req.body.name,
         description: req.body.description,
@@ -103,10 +101,11 @@ class FoodController {
         img: url,
       };
       const newFood = new Food(formData);
-      await newFood.save();
-      res.status(200).json({ status: "Success !" });
-    } catch (error) {
-      res.send(error);
+      const result = await newFood.save();
+      res.status(200).json(result);
+    } catch (next) {
+      console.log(next);
+      res.send(next);
       // }
     }
   }
