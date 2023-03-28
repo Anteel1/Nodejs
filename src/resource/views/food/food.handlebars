@@ -10,8 +10,18 @@
         aria-describedby="basic-addon1" name="description" value="{{Food.description}}" />
     </div>
     <div class="d-flex m-3">
-      <input style="margin: 10;" type="text" class="form-control" placeholder="idCategory" aria-label="idCategory"
-        aria-describedby="basic-addon1" name="idCategory" value="{{Food.idCategory}}" />
+      <select class="form-select" name="idCategory" id="category">
+        <optgroup>
+          <option selected="true" disabled="true" hidden="true">Choose option</option>
+          <option value="641033f8399ccfdb5c5c8493">Fruits</option>
+          <option value="641035de399ccfdb5c5c8494">Vegtables</option>
+          <option value="64219468f6ae4300025848cd"> Meat</option>
+          <option value="64219489f6ae4300025848d0">Fish</option>
+          <option value="6421949cf6ae4300025848d2">Cake</option>
+          <option value="642195a7f6ae4300025848da">Ice cream</option>
+          <option value="642195e3f6ae4300025848dd">Juice</option>
+        </optgroup>
+      </select>
     </div>
     <div class="d-flex m-3">
       <img width="50" height="50" src={{Food.img}} />
