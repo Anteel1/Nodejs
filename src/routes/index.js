@@ -1,43 +1,34 @@
 //  INIT ROUTE
 const router = require("./constant");
-const homeRouter = require("./home");
-const userRouter = require("./user");
-const signUpRouter = require("./user/auth/signup");
-const signInRouter = require("./user/auth/signin");
-const crudUpdateRouter = require("./user/crud/update");
-const crudDeleteRouter = require("./user/crud/delete");
-const chartPage = require("./chart/index");
-const category = require("./product/category/index");
-const food = require("./product/food/index");
-const foodCRUD = require("./product/food/crud");
-const newCategory = require("./product/category/create");
-const updateCategory = require("./product/category/update");
+const routerController = require("./routerController");
 // ROUTER
 const routes = (app) => {
   // [GET] USER INFORMATION
-  app.use(router.USER, crudUpdateRouter);
+  app.use(router.USER, routerController.crudUpdateRouter);
   // [GET] USER INFORMATION
-  app.use(router.USER, crudDeleteRouter);
+  app.use(router.USER, routerController.crudDeleteRouter);
   // [GET] LIST USER PAGE
-  app.use(router.GET_ALL_USER, userRouter);
+  app.use(router.GET_ALL_USER, routerController.userRouter);
   // [GET] SIGN UP PAGE
-  app.use(router.SIGNUP, signUpRouter);
+  app.use(router.SIGNUP, routerController.signUpRouter);
   // [GET] SIGN IN PAGE
-  app.use(router.SIGNIN, signInRouter);
+  app.use(router.SIGNIN, routerController.signInRouter);
   //[GET] HOME PAGE
-  app.use(router.HOME, homeRouter);
+  app.use(router.HOME, routerController.homeRouter);
   //[GET] CHART PAGE
-  app.use(router.CHART, chartPage);
+  app.use(router.CHART, routerController.chartPage);
   //[GET] PRODUCT CATEGORY PAGE
-  app.use(router.ALLCATEGORY, category);
+  app.use(router.ALLCATEGORY, routerController.category);
   //[GET] ITEM CATEGORY PAGE
-  app.use(router.CATEGORY, updateCategory);
+  app.use(router.CATEGORY, routerController.updateCategory);
   //[GET] PRODUCT PAGE
-  app.use(router.GET_ALL_FOOD, food);
+  app.use(router.GET_ALL_FOOD, routerController.food);
   //[GET] CREATE CATEGORY PAGE
-  app.use(router.NEWCATEGORY, newCategory);
+  app.use(router.NEWCATEGORY, routerController.newCategory);
   // [GET] FOOD INFOR
-  app.use(router.FOOD, foodCRUD);
+  app.use(router.FOOD, routerController.foodCRUD);
+  // [GET] PAYMENT PAGE
+  app.use(router.PAYMENT, routerController.payment);
 };
 
 module.exports = routes;

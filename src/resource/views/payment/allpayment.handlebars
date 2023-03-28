@@ -1,0 +1,35 @@
+<div class="container ">
+    <table class="table">
+        <label style="color: black;font-size: larger; font-weight: 400;">
+            Payment
+        </label>
+        <div class="d-flex">
+  <form method="get" action="payment/search/" class="form-inline">
+    <input class="form-control mr-sm-2 " name="Username" type="search" placeholder="Search..." aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form></div>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">UserID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">AcceptPayment</th>
+            </tr>
+        </thead>
+        <tbody>
+              {{#each Payment}}
+      <tr>
+        <th scope="rows">{{@index}}</th>
+        <td>{{this.users.[0].username}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.status}}</td>
+        <td><a style="text-decoration: none;" href="/user/{{this.date}}"><button type="submit"
+              class="btn btn-dark">Accept</button>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+        </tbody>
+    </table>
+</div>

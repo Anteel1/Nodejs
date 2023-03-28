@@ -10,6 +10,7 @@ const router = {
   NEWCATEGORY: "/newcategory",
   CATEGORY: "/category",
   FOOD: "/food",
+  PAYMENT: "/payment",
 };
 
 module.exports = router;

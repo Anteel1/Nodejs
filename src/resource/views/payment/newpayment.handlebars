@@ -1,0 +1,60 @@
+<h1>Create Payment</h1>
+<nav class="navbar bg- rgba(73, 73, 73, 0.993)">
+  <form action="/payment/create" method="post" class="container-colum">
+    <div class="d-flex m-3">
+      <input
+        style="margin: 10;"
+        type="text"
+        class="form-control"
+        placeholder="idUser"
+        aria-label="idUser"
+        aria-describedby="basic-addon1"
+        name="idUser"
+      />
+    </div>
+    <div class="d-flex m-3">
+      <input
+        style="margin: 10;"
+        type="date"
+        class="form-control"
+        placeholder="date"
+        aria-label="date"
+        aria-describedby="basic-addon1"
+        name="date"
+      />
+    </div>
+    <div class="d-flex m-3">
+      <select class="form-select" name="status" id="category"> 
+        <optgroup >
+      <option  value="0">Giỏ hàng</option>
+      {{!-- <option value="1">Đóng gói</option>
+      <option value="2">Giao hàng</option>
+      <option value="3">Đã nhận</option> --}}
+    </optgroup>
+      </select>
+    </div>
+       <div class="d-flex m-3">
+     <select class="form-select" name="methods" > 
+        <optgroup >
+      <option  value="-1">Không có</option>
+      {{!-- <option  value="0">Ship COD</option>
+      <option value="1">Zalo pay</option> --}}
+    </optgroup>
+      </select>
+    </div>
+       <div class="d-flex m-3">
+      <input
+        style="margin: 10;"
+        type="text"
+        class="form-control"
+        placeholder="methodsService"
+        aria-label="methodsService"
+        aria-describedby="basic-addon1"
+        name="methodsService"
+      />
+    </div>
+    <div style="margin: 10;" class="d-grid gap-2">
+      <button class="btn btn-primary" type="submit">Create</button>
+    </div>
+  </form>
+</nav>
