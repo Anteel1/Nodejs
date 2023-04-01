@@ -8,7 +8,7 @@ class FoodController {
   async getAllFood(req, res) {
     try {
       await Food.find({});
-      res.status(200).json(User);
+      res.status(200).json(Food);
     } catch (error) {
       res.status(409).json({ error: error });
     }
@@ -120,6 +120,47 @@ class FoodController {
         res.status(200).json({ success: "Success !" });
       })
       .catch(next);
+  }
+  // [GET] SEARCH FOOD BY NAME JSON
+  async getSearchFoodByName(req, res, next) {
+    try {
+      await Food.find({ name: { $regex: req.body.search } }).then((Food) => {
+        res.status(200).json({ Food });
+      });
+    } catch (error) {
+      res.status(409).json({ error });
+    }
+  }
+  // [GET] SEARCH FOOD RENDER
+  async getSearchRenderFoodByName(req, res, next) {
+    console.log(req.body.search);
+    try {
+      await Food.aggregate([
+        {
+          $match: {
+            name: { $regex: req.body.search },
+          },
+        },
+        {
+          $lookup: {
+            from: "categories",
+            localField: "idCategory",
+            foreignField: "_id",
+            as: "category",
+          },
+        },
+      ]).then((Food) => {
+        if (Food.length != 0) {
+          res.render("food/allfood", {
+            Food,
+          });
+          return;
+        }
+        res.send("Không tìm thấy !!");
+      });
+    } catch (error) {
+      res.status(409).json({ error });
+    }
   }
 }
 

@@ -1,37 +1,48 @@
 <div class="container ">
-    <table class="table">
-        <label style="color: black;font-size: larger; font-weight: 400;">
-            Food
-        </label>
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Image</th>
-                <th scope="col">Inventory</th>
-                <th scope="col">Category</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each Food}}
-            <tr>
-                <th scope="rows">{{@index}}</th>
-                <td>{{this.name}}</td>
-                <td><img style="width: 50px;height: 50px" src={{this.img}} /></td>
-                <td>{{this.inventory }}</td>
-                <td>{{category.[0].name}}</td>
-                <td><a style="text-decoration: none;" href="/food/{{this._id}}"><button type="submit"
-                            class="btn btn-dark">Edit</button>
-                    </a>
-                    <a style="text-decoration: none;" href="" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#exampleModal"><button type="submit"
-                            class="btn btn-danger" id="btnDelete">Delete</button>
-                    </a>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+  <table class="table">
+    <label style="color: black;font-size: larger; font-weight: 400;">
+      Food
+    </label>
+    <div class="input-group">
+      <div class="form-outline">
+        <form name="search-food-form" method="post">
+          <input name="search" placeholder="Search..." id="search-focus" type="search" id="form1"
+            class="form-control" />
+      </div>
+      <button onclick={onSubmitSearch} id="btnSearch" type="submit" class="btn btn-primary">
+        Search
+      </button>
+      </form>
+    </div>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Inventory</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each Food}}
+      <tr>
+        <th scope="rows">{{@index}}</th>
+        <td>{{this.name}}</td>
+        <td><img style="width: 50px;height: 50px" src={{this.img}} /></td>
+        <td>{{this.inventory }}</td>
+        <td>{{category.[0].name}}</td>
+        <td><a style="text-decoration: none;" href="/food/{{this._id}}"><button type="submit"
+              class="btn btn-dark">Edit</button>
+          </a>
+          <a style="text-decoration: none;" href="" data-id="{{this._id}}" data-bs-toggle="modal"
+            data-bs-target="#exampleModal"><button type="submit" class="btn btn-danger" id="btnDelete">Delete</button>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
 
 {{!-- MODAL --}}
@@ -52,19 +63,29 @@
     </div>
   </div>
 </div>
-<form name="delete-food-form" method="post" ></form>
+<form name="delete-food-form" method="post"></form>
 <script>
-  const deleteForm =document.forms['delete-food-form']
+  const deleteForm = document.forms['delete-food-form']
   const btnYes = document.getElementById('btnYes');
   const exampleModal = document.getElementById('exampleModal')
   exampleModal.addEventListener('show.bs.modal', event => {
 
-  const button = event.relatedTarget
+    const button = event.relatedTarget
 
-  const id = button.getAttribute('data-id')
-  btnYes.onclick = () =>{
-    deleteForm.action ="/food/"+id+"/delete"
-    deleteForm.submit()
-  }
- console.log(id)
-})</script>
+    const id = button.getAttribute('data-id')
+    btnYes.onclick = () => {
+      deleteForm.action = "/food/" + id + "/delete"
+      deleteForm.submit()
+    }
+    console.log(id)
+  })</script>
+
+{{!-- SEARCH --}}
+<script>
+  const onSubmitSearch = () => {
+    const searchForm = document.forms['search-food-form']
+    const btnSearch = document.getElementById('btnSearch');
+    searchForm.action = "/allfood/render"
+    searchForm.submit()
+  }  
+</script>

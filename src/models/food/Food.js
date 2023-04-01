@@ -8,5 +8,4 @@ const Food = new Schema({
   cost: { type: Schema.Types.Number },
   inventory: { type: Number },
 });
-
 module.exports = mongoose.model("foods", Food);
