@@ -29,6 +29,8 @@ const routes = (app) => {
   app.use(router.FOOD, routerController.foodCRUD);
   // [GET] PAYMENT PAGE
   app.use(router.PAYMENT, routerController.payment);
+  //[UNITY]
+  app.use(router.UNITY, routerController.unity);
 };
 
 module.exports = routes;

@@ -11,6 +11,7 @@ const router = {
   CATEGORY: "/category",
   FOOD: "/food",
   PAYMENT: "/payment",
+  UNITY: "/unity",
 };
 
 module.exports = router;

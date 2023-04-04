@@ -12,5 +12,6 @@ const routerController = {
   newCategory: require("./product/category/create"),
   updateCategory: require("./product/category/update"),
   payment: require("./payment/index"),
+  unity: require("./unity"),
 };
 module.exports = routerController;
