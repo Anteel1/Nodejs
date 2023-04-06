@@ -19,19 +19,20 @@ class BroadController {
   // [POST] BROAD
   async insert(req, res, next) {
     try {
-      const value = Broad.findOne({ name: req.body.name })
-        .then((value) => {
-          try {
-            Broad.updateOne({ _id: value._id }, req.body);
-          } catch (error) {
-            console.log(error);
-          }
-        })
-        .catch((erro) => {
+      Broad.findOne({ name: req.body.name }).then(async (value) => {
+        if (value) {
+          const form = req.body;
+          console.log(form);
+          await Broad.updateOne({ _id: value._id }, form);
+          res.status(200).json({ status: 200 });
+          return;
+        } else {
           const newBroad = new Broad(req.body);
           newBroad.save();
-        });
-      res.status(200).json({ status: 200 });
+          res.status(200).json({ status: 200 });
+          return;
+        }
+      });
     } catch (error) {
       res.status(409).json({ status: 409, erro: error });
     }

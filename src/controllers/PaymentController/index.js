@@ -1,7 +1,4 @@
-const transporter = require("../../config/mail/index");
-const env = require("../../../env");
 const Payment = require("../../models/payment/Payment");
-const User = require("../../models/user/User");
 // CLASS CONTROLLER
 class PaymentController {
   // [GET] PAGE CREATE PAYMENT
