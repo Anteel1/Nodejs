@@ -66,6 +66,17 @@ class FoodController {
       res.status(409).json({ error: error });
     }
   }
+  // [GET] GET FOOD INFOR BY ID JSON
+  async getFoodInfor(req, res, next) {
+    try {
+      await Food.findById(req.params.id).then((Food) => {
+        Food = Food.toObject();
+        res.status(200).json({ data: Food });
+      });
+    } catch (error) {
+      res.status(409).json({ error: error });
+    }
+  }
   // [POST] FOOD UPDATE BY ID
   async postUpdateFood(req, res, next) {
     const formData = req.body;
