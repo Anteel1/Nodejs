@@ -67,7 +67,7 @@ class FoodController {
     }
   }
   // [GET] GET FOOD INFOR BY ID JSON
-  async getFoodInfor(req, res, next) {
+  async getFoodInforJS(req, res, next) {
     try {
       await Food.findById(req.params.id).then((Food) => {
         Food = Food.toObject();
