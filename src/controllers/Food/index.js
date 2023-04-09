@@ -136,7 +136,7 @@ class FoodController {
   async getSearchFoodByName(req, res, next) {
     try {
       await Food.find({ name: { $regex: req.body.search } }).then((Food) => {
-        res.status(200).json({ Food });
+        res.status(200).json({ data: Food });
       });
     } catch (error) {
       res.status(409).json({ error });
